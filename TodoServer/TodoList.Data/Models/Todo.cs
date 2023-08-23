@@ -10,7 +10,7 @@ namespace Api.Data.Models
         public string? Title 
         {
             get { return _title; }
-            set
+            private set
             {
                 if (string.IsNullOrEmpty(value))
                     throw new ArgumentNullException("Invalid title");
@@ -18,7 +18,7 @@ namespace Api.Data.Models
                 _title = value;
             }
         }
-        public string? Description { get; set; }
+        public string? Description { get; private set; }
         public DateTime? CreatedAt { get; private set; }
         public DateTime? CompletedAt { get; private set; }
 
@@ -43,6 +43,12 @@ namespace Api.Data.Models
             Id = id;
             CreatedAt = createdAt;
             CompletedAt = completedAt;
+        }
+
+        public void Update(string? title, string? description)
+        {
+            Title = title;
+            Description = description;
         }
 
         public void MarkAsComplete()

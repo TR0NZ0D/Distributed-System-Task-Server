@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Api.Data.Models;
 using Microsoft.AspNetCore.Mvc;
+using TodoList.Api.Contracts;
+using TodoList.Api.ViewModels;
 
 namespace TodoList.Api.Controllers;
 
@@ -7,69 +9,80 @@ namespace TodoList.Api.Controllers;
 [Route("api/[controller]")]
 public class TodoController : ControllerBase
 {
-    [Route("todos")]
-    public IActionResult GetTodos()
+    private readonly IRepository<Todo> _todoRepo;
+
+    public TodoController(IRepository<Todo> todoRepo)
+    {
+        _todoRepo = todoRepo;
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<List<Todo>>> GetTodos()
     {
         try
         {
-            List<Todo> todos = TaskQuery.GetTodos();
-            List<TodoViewModel> todoViews = new List<TodoViewModel>();
-            foreach (Todo todo in todos)
-            {
-                TodoViewModel todoViewModel = new TodoViewModel(todo.Id, todo.TaskName, TaskPropertiesConverter.ConvertPriorityToString(todo));
-                todoViews.Add(todoViewModel);
-            }
-
-            return Ok(todoViews);
+            List<Todo> todos = await _todoRepo.GetAll();
+            return Ok(todos);
         }
-        catch (Exception exception)
+        catch
         {
-            return Problem(exception.Message);
+            return Problem();
         }
     }
 
     [HttpPost]
-    [Route("add")]
-    public IActionResult InsertTodo([FromBody] Todo todo)
+    public async Task<ActionResult<Todo>> AddTodo([FromBody] NewTodoViewModel todo)
     {
         try
         {
-            TaskQuery.SaveTodo(todo);
-            return Ok("Task saved succesfully");
+            Todo newTodo = new(todo.title, todo.description);
+            Todo todoInserted = await _todoRepo.Add(newTodo);
+
+            return Ok(todoInserted);
         }
-        catch (Exception exception)
+        catch
         {
-            return Problem(exception.Message);
+            return Problem();
         }
     }
 
     [HttpPut]
-    [Route("edit")]
-    public IActionResult EditTodo([FromBody] Todo todo)
+    public async Task<ActionResult<Todo>> EditTodo([FromBody] UpdateTodoViewModel vm)
     {
         try
         {
-            TaskQuery.EditTodo(todo);
-            return Ok("Task edited successfully");
+            Todo todo = await _todoRepo.Get(x => x.Id == vm.Id);
+
+            if (todo == null)
+                return NotFound();
+
+            todo.Update(vm.Title, vm.Description);
+
+            await _todoRepo.Update(todo);
+            return StatusCode(StatusCodes.Status201Created, todo);
         }
-        catch (Exception exception)
+        catch
         {
-            return Problem(exception.Message);
+            return Problem();
         }
     }
 
     [HttpDelete]
-    [Route("delete")]
-    public IActionResult DeleteTodo([FromBody] Todo todo)
+    [Route("{id}")]
+    public async Task<ActionResult> DeleteTodo([FromRoute] int id)
     {
         try
         {
-            TaskQuery.DeleteTodo(todo);
-            return Ok("Task deleted successfully");
+            Todo todo = await _todoRepo.Get(x => x.Id == id);
+
+            if (todo == null)
+                return NotFound();
+
+            return Ok();
         }
-        catch (Exception exception)
+        catch
         {
-            return Problem(exception.Message);
+            return Problem();
         }
     }
 }
