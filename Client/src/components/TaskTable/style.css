@@ -1,0 +1,13 @@
+thead.table-head {
+  color: var(--yellow);
+}
+
+span.link-actions {
+  color: var(--yellow);
+  text-decoration: underline;
+}
+
+span.link-actions:hover {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
