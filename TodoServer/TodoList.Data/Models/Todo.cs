@@ -4,7 +4,7 @@ namespace Api.Data.Models
 {
     public class Todo
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         private string? _title;
         public string? Title 
@@ -24,6 +24,10 @@ namespace Api.Data.Models
 
         public bool IsCompleted => CompletedAt != null;
 
+        public Todo()
+        {
+        }
+
         public Todo(string title)
         {
             Title = title;
@@ -35,14 +39,6 @@ namespace Api.Data.Models
             Title = title;
             Description = description;
             CreatedAt = DateTime.Now;
-        }
-
-        public Todo(int id, string? title, string? description, DateTime createdAt, DateTime? completedAt) 
-            : this(title, description)
-        {
-            Id = id;
-            CreatedAt = createdAt;
-            CompletedAt = completedAt;
         }
 
         public void Update(string? title, string? description)

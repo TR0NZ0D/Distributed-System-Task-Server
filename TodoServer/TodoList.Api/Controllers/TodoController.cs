@@ -1,7 +1,7 @@
 ﻿using Api.Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using TodoList.Api.Contracts;
 using TodoList.Api.ViewModels;
+using TodoList.Data.Contracts;
 
 namespace TodoList.Api.Controllers;
 
@@ -30,15 +30,54 @@ public class TodoController : ControllerBase
         }
     }
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Todo>> GetTodo([FromRoute] int id)
+    {
+        try
+        {
+            Todo todo = await _todoRepo.GetById(id.ToString());
+            if (todo == null)
+                return NotFound();
+
+            return Ok(todo);
+        }
+        catch
+        {
+            return Problem();
+        }
+    }
+
     [HttpPost]
     public async Task<ActionResult<Todo>> AddTodo([FromBody] NewTodoViewModel todo)
     {
         try
         {
             Todo newTodo = new(todo.title, todo.description);
-            Todo todoInserted = await _todoRepo.Add(newTodo);
+            await _todoRepo.Add(newTodo);
+            
+            return Ok(newTodo);
+        }
+        catch
+        {
+            return Problem();
+        }
+    }
 
-            return Ok(todoInserted);
+    [HttpPost("markdone/{id}")]
+    public async Task<ActionResult<Todo>> MarkTodoAsDone([FromRoute] int id)
+    {
+        try
+        {
+            Todo todo = await _todoRepo.GetById(id.ToString());
+
+            if (todo.IsCompleted)
+                todo.Uncomplete();
+            else
+                todo.MarkAsComplete();
+
+            await _todoRepo.Update(todo);
+
+            return Ok(todo);
         }
         catch
         {
@@ -51,7 +90,7 @@ public class TodoController : ControllerBase
     {
         try
         {
-            Todo todo = await _todoRepo.Get(x => x.Id == vm.Id);
+            Todo todo = await _todoRepo.GetById(vm.Id.ToString());
 
             if (todo == null)
                 return NotFound();
@@ -73,7 +112,7 @@ public class TodoController : ControllerBase
     {
         try
         {
-            Todo todo = await _todoRepo.Get(x => x.Id == id);
+            Todo todo = await _todoRepo.GetById(id.ToString());
 
             if (todo == null)
                 return NotFound();
