@@ -117,6 +117,7 @@ public class TodoController : ControllerBase
             if (todo == null)
                 return NotFound();
 
+            await _todoRepo.Delete(todo);
             return Ok();
         }
         catch
