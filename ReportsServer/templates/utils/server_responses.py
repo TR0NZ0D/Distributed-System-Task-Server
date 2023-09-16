@@ -1,5 +1,6 @@
 import requests
 from dataclasses import dataclass
+from datetime import datetime
 
 
 @dataclass
@@ -10,6 +11,26 @@ class Task:
     created_at: str
     completed_at: str | None
     is_completed: bool
+
+    def created_at_as_datetime(self) -> datetime:
+        try:
+            if self.created_at is None:
+                return datetime.now()
+
+            return datetime.fromisoformat(self.created_at)
+        except Exception as e:
+            print(f'Error converting created at to datetime object: {e}')
+            return datetime.now()
+
+    def completed_at_as_datetime(self) -> datetime:
+        try:
+            if self.completed_at is None:
+                return datetime.now()
+
+            return datetime.fromisoformat(self.completed_at)
+        except Exception as e:
+            print(f'Error converting completed at to datetime object: {e}')
+            return datetime.now()
 
 
 class __TaskServerResponseBase:

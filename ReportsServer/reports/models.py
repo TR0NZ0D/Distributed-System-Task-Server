@@ -1,15 +1,26 @@
 from django.db import models
 from concurrency.fields import IntegerVersionField
+from typing import Any
 
 
 class CompletedTaskReport(models.Model):
     version = IntegerVersionField()
     task_pk = models.IntegerField("Task PK")
     created_at = models.DateTimeField("Created at", auto_now_add=True, editable=False)
+    task_created_at = models.DateTimeField("Task created at", auto_now=False, auto_now_add=False)
     task_completed_at = models.DateTimeField("Task completed at", auto_now=False, auto_now_add=False)
 
     def __str__(self):
         return f"Completed report for task {self.task_pk}"
+
+    def __getattribute__(self, __name: str) -> Any:
+        if __name == "serialize":
+            return {
+                "task_pk": self.task_pk,
+                "task_created_at": self.task_created_at,
+                "task_completed_at": self.task_completed_at
+            }
+        return super().__getattribute__(__name)
 
     class Meta:
         verbose_name = 'Completed task'
@@ -24,6 +35,14 @@ class PendingTaskReport(models.Model):
 
     def __str__(self):
         return f"Pending report for task {self.task_pk}"
+
+    def __getattribute__(self, __name: str) -> Any:
+        if __name == "serialize":
+            return {
+                "task_pk": self.task_pk,
+                "task_created_at": self.task_created_at
+            }
+        return super().__getattribute__(__name)
 
     class Meta:
         verbose_name = 'Pending task'
