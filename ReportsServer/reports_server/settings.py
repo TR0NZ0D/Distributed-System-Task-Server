@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+from api.tools.api_tools import num_version as version
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'guardian',
     'django_filters',
     'rest_framework',
+    'rest_framework_swagger',
     "channels"
 ]
 
@@ -156,8 +158,14 @@ GUARDIAN_AUTO_PREFETCH = True
 
 # Rest Framework
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
 }
 
 # Channels
@@ -165,4 +173,27 @@ CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     }
+}
+
+# Sessions
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # Session in days: 60s * 60m * 24h * 1d
+SESSION_SAVE_EVERY_REQUEST = False
+
+# Swagger Ui
+
+SWAGGER_SETTINGS = {
+    'DOC_EXPANSION': 'list',
+    'APIS_SORTER': 'alpha',
+    'OPERATIONS_SORTER': 'alpha',
+    'JSON_EDITOR': True,
+    'SHOW_REQUEST_HEADERS': True,
+    'SUPPORTED_SUBMIT_METHODS': [
+        'get'
+    ],
+    'VALIDATOR_URL': '',
+    'ACCEPT_HEADER_VERSION': version,
+    'CUSTOM_HEADERS': {},
+    "api_version": version,
+    "api_path": "/api/"
 }

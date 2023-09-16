@@ -5,8 +5,9 @@ from . import views
 app_name = 'api'
 
 urlpatterns = [
-    # ======= API ======= #
-    # path('', views..as_view(), name=""),
+    # ========== API Info ========== #
+    path('info/status/', views.ApiStatus.as_view()),  # type: ignore
+    path('info/version/', views.ApiVersion.as_view()),  # type: ignore
 
     # ======= Reports ======= #
     path('reports/', include('reports.urls')),

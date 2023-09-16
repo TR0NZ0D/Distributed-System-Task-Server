@@ -1,140 +1,795 @@
 {
 	"info": {
-		"_postman_id": "bf1b2089-b55f-4763-ae32-e592193ca75a",
+		"_postman_id": "83070c5b-d336-47da-bf48-4945d6e597e8",
 		"name": "Todo-Api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "12799169"
+		"_exporter_id": "24996295"
 	},
 	"item": [
 		{
-			"name": "get-todo-by-id",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{TodoApiUrl}}/api/todo/1",
-					"host": [
-						"{{TodoApiUrl}}"
-					],
-					"path": [
-						"api",
-						"todo",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "get-all",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{TodoApiUrl}}/api/todo",
-					"host": [
-						"{{TodoApiUrl}}"
-					],
-					"path": [
-						"api",
-						"todo"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "add-todo",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"Kill the Jocker\",\r\n    \"description\": \"Kill the jocker\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "TODO",
+			"item": [
+				{
+					"name": "get-todo-by-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TodoApiUrl}}/api/todo/1",
+							"host": [
+								"{{TodoApiUrl}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"1"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{TodoApiUrl}}/api/todo",
-					"host": [
-						"{{TodoApiUrl}}"
-					],
-					"path": [
-						"api",
-						"todo"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "mark-as-done",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"url": {
-					"raw": "{{TodoApiUrl}}/api/todo/markdone/1",
-					"host": [
-						"{{TodoApiUrl}}"
-					],
-					"path": [
-						"api",
-						"todo",
-						"markdone",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "update-todo",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Kill someone bad\",\r\n    \"description\": \"Kill someone\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+				{
+					"name": "get-all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{TodoApiUrl}}/api/todo",
+							"host": [
+								"{{TodoApiUrl}}"
+							],
+							"path": [
+								"api",
+								"todo"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{TodoApiUrl}}/api/todo",
-					"host": [
-						"{{TodoApiUrl}}"
-					],
-					"path": [
-						"api",
-						"todo"
-					]
+				{
+					"name": "add-todo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Kill the Jocker\",\r\n    \"description\": \"Kill the jocker\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TodoApiUrl}}/api/todo",
+							"host": [
+								"{{TodoApiUrl}}"
+							],
+							"path": [
+								"api",
+								"todo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mark-as-done",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{TodoApiUrl}}/api/todo/markdone/1",
+							"host": [
+								"{{TodoApiUrl}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"markdone",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-todo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Kill someone bad\",\r\n    \"description\": \"Kill someone\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{TodoApiUrl}}/api/todo",
+							"host": [
+								"{{TodoApiUrl}}"
+							],
+							"path": [
+								"api",
+								"todo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-todo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{TodoApiUrl}}/api/todo/0",
+							"host": [
+								"{{TodoApiUrl}}"
+							],
+							"path": [
+								"api",
+								"todo",
+								"0"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "delete-todo",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{TodoApiUrl}}/api/todo/0",
-					"host": [
-						"{{TodoApiUrl}}"
-					],
-					"path": [
-						"api",
-						"todo",
-						"0"
+			"name": "Reports",
+			"item": [
+				{
+					"name": "Count Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/reports/count/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reports",
+								"count",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/count/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"count",
+										""
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 500,\n    \"message\": \"Something went wrong while trying to count tasks, please see server logs\"\n}"
+						},
+						{
+							"name": "Success (Multiple)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/count/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"count",
+										""
+									]
+								}
+							},
+							"status": "Reset Content.",
+							"code": 205,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "525"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 205,\n    \"message\": \"Tasks successfully counted [Mocked]\",\n    \"content\": {\n        \"task_count\": 4,\n        \"completed_count\": 2,\n        \"pending_count\": 2,\n        \"completed_tasks_items\": [\n            {\n                \"task_pk\": 2,\n                \"task_created_at\": \"2023-09-15T21:37:10.179432Z\",\n                \"task_completed_at\": \"2023-09-15T21:37:06.246372Z\"\n            },\n            {\n                \"task_pk\": 4,\n                \"task_created_at\": \"2023-09-15T21:37:10.179432Z\",\n                \"task_completed_at\": \"2023-09-15T21:37:06.246372Z\"\n            }\n        ],\n        \"pending_tasks_items\": [\n            {\n                \"task_pk\": 1,\n                \"task_created_at\": \"2023-09-15T21:37:06.246372Z\"\n            },\n            {\n                \"task_pk\": 3,\n                \"task_created_at\": \"2023-09-15T21:37:06.246372Z\"\n            }\n        ]\n    }\n}"
+						},
+						{
+							"name": "Success (Single)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/count/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"count",
+										""
+									]
+								}
+							},
+							"status": "Reset Content.",
+							"code": 205,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "351"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 205,\n    \"message\": \"Tasks successfully counted [Mocked]\",\n    \"content\": {\n        \"task_count\": 2,\n        \"completed_count\": 1,\n        \"pending_count\": 1,\n        \"completed_tasks_items\": [\n            {\n                \"task_pk\": 2,\n                \"task_created_at\": \"2023-09-15T21:37:10.179432Z\",\n                \"task_completed_at\": \"2023-09-15T21:37:06.246372Z\"\n            }\n        ],\n        \"pending_tasks_items\": [\n            {\n                \"task_pk\": 1,\n                \"task_created_at\": \"2023-09-15T21:37:06.246372Z\"\n            }\n        ]\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Completed Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/reports/completed/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reports",
+								"completed",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/completed/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"completed",
+										""
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "107"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 500,\n    \"message\": \"Something went wrong while trying to get completed tasks, please see server logs\"\n}"
+						},
+						{
+							"name": "Success (Multiple)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/completed/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"completed",
+										""
+									]
+								}
+							},
+							"status": "Reset Content.",
+							"code": 205,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "297"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 205,\n    \"message\": \"2 completed task(s) found [Mocked]\",\n    \"content\": [\n        {\n            \"task_pk\": 2,\n            \"task_created_at\": \"2023-09-15T21:37:10.179432Z\",\n            \"task_completed_at\": \"2023-09-15T21:37:06.246372Z\"\n        },\n        {\n            \"task_pk\": 4,\n            \"task_created_at\": \"2023-09-15T21:37:10.179432Z\",\n            \"task_completed_at\": \"2023-09-15T21:37:06.246372Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success (Single)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/completed/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"completed",
+										""
+									]
+								}
+							},
+							"status": "Reset Content.",
+							"code": 205,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 205,\n    \"message\": \"1 completed task(s) found [Mocked]\",\n    \"content\": [\n        {\n            \"task_pk\": 2,\n            \"task_created_at\": \"2023-09-15T21:37:10.179432Z\",\n            \"task_completed_at\": \"2023-09-15T21:37:06.246372Z\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Pending Tasks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/api/reports/pending/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reports",
+								"pending",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/pending/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"pending",
+										""
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 500,\n    \"message\": \"Something went wrong while trying to get pending tasks, please see server logs\"\n}"
+						},
+						{
+							"name": "Success (Multiple)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/pending/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"pending",
+										""
+									]
+								}
+							},
+							"status": "Reset Content.",
+							"code": 205,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "195"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 205,\n    \"message\": \"2 pending task(s) found [Mocked]\",\n    \"content\": [\n        {\n            \"task_pk\": 1,\n            \"task_created_at\": \"2023-09-15T21:37:06.246372Z\"\n        },\n        {\n            \"task_pk\": 3,\n            \"task_created_at\": \"2023-09-15T21:37:06.246372Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success (Single)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8000/api/reports/pending/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"reports",
+										"pending",
+										""
+									]
+								}
+							},
+							"status": "Reset Content.",
+							"code": 205,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "133"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Server",
+									"value": "daphne"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": 205,\n    \"message\": \"1 pending task(s) found [Mocked]\",\n    \"content\": [\n        {\n            \"task_pk\": 1,\n            \"task_created_at\": \"2023-09-15T21:37:06.246372Z\"\n        }\n    ]\n}"
+						}
 					]
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
