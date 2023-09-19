@@ -188,7 +188,7 @@ class TaskCount(Base):
 
         if SHOULD_MOCK:
             success = reports_manager.populate_database_with_mocked_data()
-            t_count = reports_manager.count_tasks()
+            t_count = reports_manager.get_count()
 
             if t_count is None or not success:
                 return self.generate_basic_response(status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -199,7 +199,7 @@ class TaskCount(Base):
 
         else:
             success = reports_manager.populate_database()
-            t_count = reports_manager.count_tasks()
+            t_count = reports_manager.get_count()
 
             if t_count is None or not success:
                 return self.generate_basic_response(status.HTTP_500_INTERNAL_SERVER_ERROR,

@@ -55,8 +55,8 @@ class __ReportsManager:
     def count_tasks(self) -> models.TasksCounterReport | None:
         try:
             self.reset_task_count()
-            completed_tasks = models.CompletedTaskReport.objects.all()
-            pending_tasks = models.CompletedTaskReport.objects.all()
+            completed_tasks = self.get_all_completed_tasks()
+            pending_tasks = self.get_all_pending_tasks()
             completed_count = completed_tasks.count()
             pending_count = pending_tasks.count()
             task_count = completed_count + pending_count

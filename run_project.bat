@@ -30,7 +30,8 @@ goto :ReportsServerEnd
 :RunTodoServer
 echo Requesting todo server to start...
 echo:
-call %~dp0TodoServer\run_todo_server.bat
+cd %~dp0TodoServer\TodoList.Api
+call run_todo_server.bat
 
 goto :TodoServerEnd
 
