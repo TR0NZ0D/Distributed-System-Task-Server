@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
-    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,11 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',
     'reports',
-    'guardian',
     'django_filters',
     'rest_framework',
     'rest_framework_swagger',
-    "channels"
 ]
 
 MIDDLEWARE = [
@@ -57,11 +54,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'guardian.backends.ObjectPermissionBackend',
-)
 
 ROOT_URLCONF = 'reports_server.urls'
 
@@ -82,7 +74,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'reports_server.wsgi.application'
-ASGI_APPLICATION = "reports_server.asgi.application"
 
 
 # Database
@@ -142,19 +133,10 @@ STATICFILES_DIRS = [
     BASE_DIR.joinpath('templates/static')
 ]
 
-# Media Files
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR.joinpath('media')
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Django Guardian
-GUARDIAN_RENDER_403 = True
-GUARDIAN_AUTO_PREFETCH = True
 
 # Rest Framework
 REST_FRAMEWORK = {
@@ -166,13 +148,6 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
     ]
-}
-
-# Channels
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
 }
 
 # Sessions
