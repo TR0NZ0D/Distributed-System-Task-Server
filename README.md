@@ -12,7 +12,7 @@ gerará relatórios sobre as tarefas que foram inseridas no servidor A e um terc
 servidor que será o cliente, onde realizará acessos em ambos os servidores A e
 B, desta forma, teremos um sistema distribuído que se comunicarão entre si.
 
-![Estrutura do Projeto](/Files/Docs/APS/Images/topografia.drawio.png)
+![Estrutura do Projeto](Images/topografia.drawio.png)
 
 ## Integrantes
 
